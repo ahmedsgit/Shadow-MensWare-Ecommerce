@@ -1,17 +1,10 @@
-import { Box, Stack, Typography } from "@pankod/refine-mui";
-import { PieChart, PropertyReferrals, TotalRevenue } from "components";
+import { Box, Stack } from "@pankod/refine-mui";
+import { PieChart, PropertyReferrals, Title, TotalRevenue } from "components";
 
 const Home = () => {
   return (
     <Box>
-      <Typography
-        fontSize={25}
-        fontWeight={700}
-        color="#808191"
-        letterSpacing={2}
-      >
-        Admin Dashboard
-      </Typography>
+      <Title title="Admin Dashboard" />
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
           title="Properties for sale"

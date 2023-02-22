@@ -8,7 +8,6 @@ import {
   ErrorComponent,
 } from "@pankod/refine-mui";
 import dataProvider from "@pankod/refine-simple-rest";
-import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
 import { ColorModeContextProvider } from "contexts";
@@ -31,6 +30,7 @@ import {
   PropertyDetails,
 } from "pages";
 import agents from "pages/agents";
+import { Profile } from "components";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -110,31 +110,31 @@ function App() {
           catchAll={<ErrorComponent />}
           resources={[
             {
-              name: "property",
+              name: "properties",
               list: AllProperties,
               show: PropertyDetails,
               create: CreateProperty,
               icon: <VillaOutlined />,
             },
             {
-              name: "agent",
+              name: "agents",
               list: agents,
               icon: <PeopleAltOutlined />,
             },
             {
-              name: "review",
-              list: MuiInferencer,
+              name: "reviews",
+              list: Home,
               icon: <StarOutlineRounded />,
             },
             {
-              name: "message",
-              list: MuiInferencer,
+              name: "messages",
+              list: Home,
               icon: <ChatBubbleOutline />,
             },
             {
               name: "my-profile",
               options: { label: "My Profile" },
-              list: MuiInferencer,
+              list: Profile,
               icon: <AccountCircleOutlined />,
             },
           ]}
