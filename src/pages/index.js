@@ -12,10 +12,10 @@ export {
     AgentProfile,
     Agents,
     AllProperties,
+    PropertyDetails,
     CreateProperty,
     Home,
     Login,
     MyProfile,
-    PropertyDetails,
-    EditProperty,
+    EditProperty
 };

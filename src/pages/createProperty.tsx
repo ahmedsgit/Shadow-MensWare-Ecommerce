@@ -1,11 +1,10 @@
+import { useState } from "react";
 import { useGetIdentity } from "@pankod/refine-core";
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
-import { useNavigate } from "@pankod/refine-react-router-v6";
-import { Form } from "components";
-import React, { useState } from "react";
+
+import Form from "components/common/Form";
 
 const CreateProperty = () => {
-  const navigate = useNavigate();
   const { data: user } = useGetIdentity();
   const [propertyImage, setPropertyImage] = useState({ name: "", url: "" });
   const {
@@ -36,6 +35,7 @@ const CreateProperty = () => {
       email: user.email,
     });
   };
+
   return (
     <Form
       type="Create"
@@ -43,11 +43,10 @@ const CreateProperty = () => {
       onFinish={onFinish}
       formLoading={formLoading}
       handleSubmit={handleSubmit}
-      propertyImage={propertyImage}
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
+      propertyImage={propertyImage}
     />
   );
 };
-
 export default CreateProperty;

@@ -28,6 +28,7 @@ import {
   AllProperties,
   CreateProperty,
   PropertyDetails,
+  EditProperty,
 } from "pages";
 import agents from "pages/agents";
 import { Profile } from "components";
@@ -121,7 +122,7 @@ function App() {
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
         <Refine
-          dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+          dataProvider={dataProvider("http://localhost:8080/api/v1")}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
@@ -131,6 +132,7 @@ function App() {
               list: AllProperties,
               show: PropertyDetails,
               create: CreateProperty,
+              edit: EditProperty,
               icon: <VillaOutlined />,
             },
             {

@@ -1,18 +1,18 @@
 import {
   Box,
-  Button,
+  Typography,
   FormControl,
   FormHelperText,
-  MenuItem,
-  Select,
-  Stack,
-  TextareaAutosize,
   TextField,
-  Typography,
+  TextareaAutosize,
+  Stack,
+  Select,
+  MenuItem,
+  Button,
 } from "@pankod/refine-mui";
+
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
-import Title from "./Title";
 
 const Form = ({
   type,
@@ -25,7 +25,10 @@ const Form = ({
 }: FormProps) => {
   return (
     <Box>
-      <Title title={`${type} a Property`} />
+      <Typography fontSize={25} fontWeight={700} color="#11142d">
+        {type} a Property
+      </Typography>
+
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
         <form
           style={{
@@ -162,7 +165,8 @@ const Form = ({
               {...register("location", { required: true })}
             />
           </FormControl>
-          <Stack direction="column" justifyContent="center" gap={1} mb={2}>
+
+          <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>
               <Typography
                 color="#11142d"
@@ -171,25 +175,27 @@ const Form = ({
                 my="10px"
               >
                 Property Photo
-                <Button
-                  component="label"
-                  sx={{
-                    width: "fit-content",
-                    color: "#2ed480",
-                    textTransform: "capitalize",
-                    fontSize: 16,
-                  }}
-                >
-                  Upload *
-                  <input
-                    hidden
-                    accept="image/*"
-                    type="file"
-                    //@ts-ignore
-                    onChange={(e) => handleImageChange(e.target.files[0])}
-                  />
-                </Button>
               </Typography>
+
+              <Button
+                component="label"
+                sx={{
+                  width: "fit-content",
+                  color: "#2ed480",
+                  textTransform: "capitalize",
+                  fontSize: 16,
+                }}
+              >
+                Upload *
+                <input
+                  hidden
+                  accept="image/*"
+                  type="file"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    handleImageChange(e.target.files![0]);
+                  }}
+                />
+              </Button>
             </Stack>
             <Typography
               fontSize={14}
@@ -199,13 +205,14 @@ const Form = ({
               {propertyImage?.name}
             </Typography>
           </Stack>
+
+          <CustomButton
+            type="submit"
+            title={formLoading ? "Submitting..." : "Submit"}
+            backgroundColor="#475be8"
+            color="#fcfcfc"
+          />
         </form>
-        <CustomButton
-          type="submit"
-          title={formLoading ? "Submitting..." : "Submit"}
-          backgroundColor="#475be8"
-          color="#fcfcfc"
-        />
       </Box>
     </Box>
   );
